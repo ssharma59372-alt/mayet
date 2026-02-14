@@ -1,26 +1,29 @@
-name: integration
+name: React CI Test
 
 on:
- push:
-  branches: ['shivam']
+  push:
+    branches: [ "shivam" ]
+  pull_request:
+    branches: [ "shivam" ]
 
 jobs:
-  build:
-
+  build-and-test:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [20.x, 22.x]
-       
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: installing depend
-      run: npm install
-    - name: making build
-      run: npm run build
+      - name: Code Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x, 22.x
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm run test
+
+      - name: Build Project
+        run: npm run build
