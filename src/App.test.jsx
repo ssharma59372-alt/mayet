@@ -1,6 +1,10 @@
-import { test, expect } from "vitest";
+import { render, screen } from '@testing-library/react'
+import App from './App'
 
-test("simple test", () => {
-  expect(1 + 1).toBe(2);
-});
+test('renders heading', () => {
+  render(<App />)
+  const element = screen.getByText(/vite/i)
+  expect(element).toBeInTheDocument()
+})
+
 
