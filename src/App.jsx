@@ -4,7 +4,7 @@ function App() {
   const [text, setText] = useState("Click Me");
 
   const handleClick = () => {
-    setText("Button Clicked 🚀");
+    setText("Shivam + Deepanshu🚀");
   };
 
   return (
